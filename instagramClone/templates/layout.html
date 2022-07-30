@@ -1,14 +1,101 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8" />  
+<meta charset="utf-8" /> 
 <title>
     Instagram
 </title>
+
+<link rel = "stylesheet" href="{% static "bootstrap-4.4.1-dist/css/bootstrap.min.css" %}"/>
+<script src = "{% static "jquery-3.6.1.min.js" %}"></script>
+<script src= "{% static "bootstrap-4.4.1-dist/js/bootstrap.min.js" %}"></script>
 </head>
 <body>
+    
+    {% if messages %}
+        {% for message in messages %}
+            <div class = "alert alert-{{ message.tags }}">
+                {{ message }}
+            </div>
+        {% endfor %}    
+    {% endif %}
+    
+    <div class = "border-bottom mb-3">
+        <div class="container">
+            <div class="row">
+                <div class = "col-sm-12">
+                    <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 bg-white">
+                        <h5 class="my-0 mr-md-auto font-weight-normal">
+                            <svg class = "mr-3" xmlns="http://www.w3.org/2000/svg" version="1.0" width="24" height="24" viewBox="0 0 1280.000000 1280.000000" preserveAspectRatio="xMidYMid meet">
+                                <g transform="translate(0.000000,1280.000000) scale(0.100000,-0.100000)" fill="#000000" stroke="none">
+                                <path d="M3035 12789 c-144 -13 -390 -55 -540 -94 -1169 -301 -2089 -1221 -2390 -2390 -40 -157 -81 -397 -95 -560 -6 -78 -10 -1256 -10 -3346 0 -3508 -2 -3362 55 -3675 157 -855 646 -1617 1358 -2118 498 -350 1058 -549 1677 -596 214 -16 6632 -9 6750 8 576 82 1009 238 1444 519 193 125 323 230 509 413 320 312 548 637 722 1033 134 302 211 587 267 977 17 118 24 6536 8 6750 -45 585 -225 1118 -541 1595 -503 760 -1282 1276 -2173 1440 -313 57 -163 55 -3695 54 -1785 -1 -3291 -6 -3346 -10z m6705 -1099 c927 -114 1678 -775 1905 -1675 69 -274 65 -29 65 -3620 0 -2856 -2 -3258 -15 -3362 -50 -379 -194 -738 -423 -1047 -96 -130 -328 -362 -458 -458 -309 -229 -668 -373 -1047 -423 -104 -13 -506 -15 -3362 -15 -3591 0 -3346 -4 -3620 65 -903 228 -1571 990 -1675 1914 -8 68 -10 1065 -8 3386 l3 3290 28 138 c162 811 724 1453 1494 1707 132 43 345 91 463 103 91 10 6571 6 6650 -3z"/>
+                                <path d="M9785 10656 c-278 -65 -491 -272 -559 -547 -23 -93 -21 -255 4 -353 110 -432 583 -666 995 -493 111 46 253 160 316 253 175 258 173 598 -6 849 -89 125 -211 215 -362 268 -75 26 -106 30 -208 33 -78 3 -141 -1 -180 -10z"/>
+                                <path d="M6195 9574 c-786 -62 -1494 -384 -2039 -930 -504 -503 -813 -1135 -913 -1864 -24 -177 -24 -596 1 -775 71 -521 231 -950 511 -1370 436 -655 1087 -1123 1837 -1320 470 -123 982 -137 1457 -39 612 126 1160 422 1606 869 507 507 815 1133 912 1855 22 167 25 590 5 750 -94 744 -404 1383 -922 1900 -500 499 -1139 811 -1855 905 -114 16 -494 27 -600 19z m400 -975 c428 -36 853 -207 1195 -479 113 -91 299 -283 386 -400 224 -300 361 -628 421 -1005 24 -154 24 -487 0 -644 -152 -971 -897 -1716 -1868 -1868 -153 -24 -499 -24 -647 0 -732 118 -1341 565 -1662 1220 -332 676 -298 1470 91 2114 177 292 460 575 752 752 399 241 869 350 1332 310z"/>
+                                </g>
+                            </svg>
+                            <img src = "{% static "logo.png" %}" alt = "instagram" width = "103" height = "29"/>
+                        </h5>
+                        <nav class="my-2 my-md-0 mr-md-3">
+                        <a class="p-2 text-dark" href="#">
+                            <svg aria-label="사람 찾기" class="_ab6-" color="#262626" fill="#262626" height="24" role="img" viewBox="0 0 24 24" width="24"><polygon fill="none" points="13.941 13.953 7.581 16.424 10.06 10.056 16.42 7.585 13.941 13.953" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></polygon><polygon fill-rule="evenodd" points="10.06 10.056 13.949 13.945 7.581 16.424 10.06 10.056"></polygon><circle cx="12.001" cy="12.005" fill="none" r="10.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></circle></svg>
+                        </a>
+                        <a class="p-2 text-dark" href="#">
+                            <svg aria-label="활동 피드" class="_ab6-" color="#262626" fill="#262626" height="24" role="img" viewBox="0 0 24 24" width="24"><path d="M16.792 3.904A4.989 4.989 0 0121.5 9.122c0 3.072-2.652 4.959-5.197 7.222-2.512 2.243-3.865 3.469-4.303 3.752-.477-.309-2.143-1.823-4.303-3.752C5.141 14.072 2.5 12.167 2.5 9.122a4.989 4.989 0 014.708-5.218 4.21 4.21 0 013.675 1.941c.84 1.175.98 1.763 1.12 1.763s.278-.588 1.11-1.766a4.17 4.17 0 013.679-1.938m0-2a6.04 6.04 0 00-4.797 2.127 6.052 6.052 0 00-4.787-2.127A6.985 6.985 0 00.5 9.122c0 3.61 2.55 5.827 5.015 7.97.283.246.569.494.853.747l1.027.918a44.998 44.998 0 003.518 3.018 2 2 0 002.174 0 45.263 45.263 0 003.626-3.115l.922-.824c.293-.26.59-.519.885-.774 2.334-2.025 4.98-4.32 4.98-7.94a6.985 6.985 0 00-6.708-7.218z"></path></svg>
+                        </a>
+                        <a class="p-2 text-dark" href="#">
+                            Profile
+                        </a>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     {% block content %}
     {% endblock %}
-    
+
+    <div class = "border-top">
+        <div class = "container">
+            <footer class="pt-4 my-md-5 pt-md-5">
+                <div class="row">
+                <div class="col-12 col-md">
+                    {% comment %} <img class="mb-2" src="/docs/4.4/assets/brand/bootstrap-solid.svg" alt="" width="24" height="24"> {% endcomment %}
+                    <small class="d-block mb-3 text-muted">© 2017-2019</small>
+                </div>
+                <div class="col-6 col-md">
+                    <h5>Features</h5>
+                    <ul class="list-unstyled text-small">
+                    <li><a class="text-muted" href="#">Cool stuff</a></li>
+                    <li><a class="text-muted" href="#">Random feature</a></li>
+                    <li><a class="text-muted" href="#">Team feature</a></li>
+                    <li><a class="text-muted" href="#">Stuff for developers</a></li>
+                    <li><a class="text-muted" href="#">Another one</a></li>
+                    <li><a class="text-muted" href="#">Last time</a></li>
+                    </ul>
+                </div>
+                <div class="col-6 col-md">
+                    <h5>Resources</h5>
+                    <ul class="list-unstyled text-small">
+                    <li><a class="text-muted" href="#">Resource</a></li>
+                    <li><a class="text-muted" href="#">Resource name</a></li>
+                    <li><a class="text-muted" href="#">Another resource</a></li>
+                    <li><a class="text-muted" href="#">Final resource</a></li>
+                    </ul>
+                </div>
+                <div class="col-6 col-md">
+                    <h5>About</h5>
+                    <ul class="list-unstyled text-small">
+                    <li><a class="text-muted" href="#">Team</a></li>
+                    <li><a class="text-muted" href="#">Locations</a></li>
+                    <li><a class="text-muted" href="#">Privacy</a></li>
+                    <li><a class="text-muted" href="#">Terms</a></li>
+                    </ul>
+                </div>
+                </div>
+            </footer>
+        </div>
+    </div>
 </body>
 </html>

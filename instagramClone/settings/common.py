@@ -30,8 +30,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     #Third Apps
-    'debug_toolbar'
+    'debug_toolbar',
+    'bootstrap4',
     #Locals Apps
+    'accounts',
 ]
 
 MIDDLEWARE = [
@@ -75,6 +77,8 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+
+AUTH_USER_MODEL = "accounts.User"
 
 
 # Password validation
@@ -126,3 +130,5 @@ MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 INTERNAL_IPS = ['127.0.0.1',]
+
+
